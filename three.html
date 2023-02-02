@@ -65,13 +65,12 @@
 			}
 			function animate() {
 				requestAnimationFrame(animate)
-				cube2.rotation.z += 0.0
-				if (cube2.position.x >= cube2target.positiveLimit) {
-					cube2target.direction = false
-				}
-				if (cube2.position.x <= cube2target.negativeLimit) {
-					cube2target.direction = true
-				}
+				cube2.rotation.z += 0.01
+				cube2.position.x >= cube2target.positiveLimit
+					? (cube2target.direction = false)
+					: cube2.position.x <= cube2target.negativeLimit
+					? (cube2target.direction = true)
+					: (cube2.direction = false)
 
 				cube2target.direction
 					? (cube2.position.x += 0.01)
