@@ -7,10 +7,12 @@ const renderer = new THREE.WebGLRenderer({
 	canvas: document.getElementById('app') as HTMLCanvasElement,
 })
 renderer.setSize(width, height)
+renderer.shadowMap.enabled = true
 
 const mainCamera = new THREE.PerspectiveCamera(75, width / height, 0.1, 100)
 
 const scene = new THREE.Scene()
+scene.background = new THREE.Color(0x010105)
 
 renderer.render(scene, mainCamera)
 const center = new THREE.Vector3()
@@ -36,9 +38,10 @@ const cube2 = new THREE.Mesh(geometry2, material2)
 cube2.position.x = 0
 scene.add(cube2)
 
+const ambient = new THREE.HemisphereLight(0xffffbb, 0x080820, 0.1)
 const light = new THREE.DirectionalLight(0xffff99, 1.5)
 light.position.set(1, 0.1, 0.5)
-scene.add(light)
+scene.add(light, ambient)
 
 const cube2target = {
 	positiveLimit: 1,
