@@ -81,7 +81,8 @@ function animate() {
 	mainCamera.lookAt(center)
 	theta += 0.003
 
-	cube2BB.copy(cube2.geometry.boundingBox).applyMatrix4(cube2.matrixWorld)
+	if (cube2.geometry.boundingBox?.isBox3)
+		cube2BB.copy(cube2.geometry.boundingBox).applyMatrix4(cube2.matrixWorld)
 
 	checkCollisions()
 	renderer.render(scene, mainCamera)
