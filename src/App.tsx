@@ -11,7 +11,7 @@ function Box(props: JSX.IntrinsicElements['mesh']) {
 	const [hovered, hover] = useState(false)
 	const [clicked, click] = useState(false)
 	// Rotate mesh every frame, this is outside of React without overhead
-	useFrame((state, delta) => (ref.current.rotation.x += 0.01))
+	useFrame((state, delta) => (ref.current.rotation.x += delta))
 
 	return (
 		<mesh
